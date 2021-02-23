@@ -56,3 +56,6 @@ VALUES
 ('Toyota'),
 ('Volkswagen'),
 ('Volvo');
+INSERT INTO Cars(ModelYear)
+VALUES 
+('2020'),('2021'),('2023')

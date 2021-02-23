@@ -23,7 +23,7 @@ namespace CC
 
         private static void ColorManagerTest()
         {
-            ColorManager color = new ColorManager(new EFColorDal());
+            ColorManager color = new ColorManager(new EfColorDal());
             var result = color.GetAll();
             if (result.Success)
             {
@@ -42,7 +42,7 @@ namespace CC
         }
         private static void BrandManagerTest()
         {
-            BrandManager brandmaneger = new BrandManager(new EFBrandDal());
+            BrandManager brandmaneger = new BrandManager(new EfBrandDal());
             var result = brandmaneger.GetAll();
             if (result.Success)
             {

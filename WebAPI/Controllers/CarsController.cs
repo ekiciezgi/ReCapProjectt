@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        ICarService _carservice;
+        ICarService  _carservice;
 
         public CarsController(ICarService carService)
         {
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
          }
 
         [HttpPost("add")]
-        public IActionResult Post(Car car)
+        public IActionResult Add(Car car)
         {
             var result = _carservice.Add(car);
             if (result.Success)
