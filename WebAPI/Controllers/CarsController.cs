@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
-{
+{  
     [Route("api/[controller]")]
     [ApiController]
     public class CarsController : ControllerBase
@@ -59,5 +59,26 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpPost("delete")]
+        public IActionResult Delete( Car car)
+        {
+            var result = _carservice.Delete(car);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpPost("update")]
+        public IActionResult Update(Car car )
+        {
+            var result = _carservice.Update(car);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+       
     }
 }
