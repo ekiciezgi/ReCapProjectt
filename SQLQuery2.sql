@@ -1,51 +1,8 @@
-﻿CREATE TABLE [dbo].[brands] (
-    [BrandId]   INT           IDENTITY (1, 1) NOT NULL,
-    [BrandName] NVARCHAR (50) NULL,
-    CONSTRAINT [PK_brands] PRIMARY KEY CLUSTERED ([BrandId] ASC)
-);
-
-CREATE TABLE [dbo].[cars] (
-    [Id]          INT             IDENTITY (1, 1) NOT NULL,
-    [BrandId]     INT             NULL,
-    [ColorId]     INT             NULL,
-    [ModelYear]   NVARCHAR (50)   NULL,
-    [DailyPrice]  DECIMAL (18, 2) NULL,
-    [Description] NVARCHAR (MAX)  NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC), 
-    CONSTRAINT [FK_cars_Brands] FOREIGN KEY ([BrandId]) REFERENCES [brands]([BrandId]), 
-    CONSTRAINT [FK_cars_colors] FOREIGN KEY ([ColorId]) REFERENCES [colors]([ColorId])
-);
-
-CREATE TABLE [dbo].[colors] (
-    [ColorId]   INT           IDENTITY (1, 1) NOT NULL,
-    [ColorName] NVARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([ColorId] ASC)
-);
-
-CREATE TABLE [dbo].[customers] (
-    [Id]          INT            IDENTITY (1, 1) NOT NULL,
-    [UserId]      INT            NULL,
-    [CompanyName] NVARCHAR (150) NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC), 
-    CONSTRAINT [FK_customers_Users] FOREIGN KEY ([UserId]) REFERENCES [users]([Id])
-);
-
-CREATE TABLE [dbo].[rentals] (
-    [Id]         INT      IDENTITY (1, 1) NOT NULL,
-    [CarId]      INT      NULL,
-    [CustomerId] INT      NULL,
-    [RenDate]    DATETIME NULL,
-    [ReturnDate] DATETIME NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC), 
-    CONSTRAINT [FK_rentals_cars] FOREIGN KEY ([CarId]) REFERENCES [cars]([Id]),
-	 CONSTRAINT [FK_rentals_Customers] FOREIGN KEY ([CustomerId]) REFERENCES [customers]([Id])
-);
-
-CREATE TABLE [dbo].[users] (
-    [Id]        INT            IDENTITY (1, 1) NOT NULL,
-    [FirstName] NVARCHAR (50)  NULL,
-    [LastName]  NVARCHAR (50)  NULL,
-    [Email]     NVARCHAR (150) NULL,
-    [Password]  NVARCHAR (50)  NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+﻿Insert into Cars(BrandId,ColorId,ModelYear,DailyPrice,Description) values
+(1,5,'2020',450,'Cömert, şık iç mekân, dokunmatik işletim konsepti ---> AUDI Q8 - Red'),
+(2,2,'2018',370,'Hem bir sedan hem bir coupé, hem konforlu hem de sportif ---> BMW 2 Gran Coupé - White'),
+(3,4,'2015',250,'Akıcı çizgilere sahip sınıfında eşi benzeri görülmemiş dinamik tasarımlı ---> HYUNDAI i10 - Blue'),
+(4,7,'2016',290,'Güçlü motoru, geniş iç hacmi ve güven veren dış görünümüyle ---> Mitsubishi Outlander - Green'),
+(5,6,'2017',350,'Rahat ve engeltanımaz ---> NISSAN QASHQAI - Brown'),
+(6,3,'2019',630,'Otomobil ve sürücüsünün mükemmel bir uyumu ---> MAZDA CX-5 - Silver'),
+(7,1,'2021',720,'Hız ve adrenalin dolu bir macera ---> PORSCHE P911 Turbo S - Black');

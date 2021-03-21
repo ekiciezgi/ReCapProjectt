@@ -49,7 +49,7 @@ namespace WebAPI
             //services.AddSingleton<IColorService, ColorManager>();//data  yoksa kullan 
             //services.AddSingleton<IColorDal, EFColorDal>();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           // services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

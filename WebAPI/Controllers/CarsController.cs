@@ -10,33 +10,34 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
-{  
+{
     [Route("api/[controller]")]
     [ApiController]
     public class CarsController : ControllerBase
     {
-        ICarService  _carservice;
+
+        ICarService _carservice;
 
         public CarsController(ICarService carService)
         {
             _carservice = carService;
         }
 
-       [HttpGet("getall")]
-         public IActionResult Get()
-         {
+        [HttpGet("getall")]
+        public IActionResult Get()
+        {
 
-                 var result = _carservice.GetAll();
-             if (result.Success)
-             {
-                 return Ok(result);
-             }
-                 return BadRequest(result.Message);
+            var result = _carservice.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
 
-           //new Car { CarId = 1 };
+          
 
 
-         }
+        }
 
         [HttpPost("add")]
         public IActionResult Add(Car car)
@@ -60,7 +61,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
         [HttpPost("delete")]
-        public IActionResult Delete( Car car)
+        public IActionResult Delete(Car car)
         {
             var result = _carservice.Delete(car);
             if (result.Success)
@@ -70,7 +71,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
         [HttpPost("update")]
-        public IActionResult Update(Car car )
+        public IActionResult Update(Car car)
         {
             var result = _carservice.Update(car);
             if (result.Success)
@@ -79,6 +80,8 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Message);
         }
-       
+
+
+
     }
 }
